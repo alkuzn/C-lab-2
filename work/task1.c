@@ -2,5 +2,5 @@
 
 float height(int currTime, int startHeight)
 {
-	return 9.81 * (currTime * currTime) / 2;
+	return startHeight - 9.81 * (currTime * currTime) / 2;
 }

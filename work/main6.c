@@ -4,7 +4,7 @@
 
 int main()
 {
-	char buf[50];
+	char buf[256];
 	int len;
 	printf("Enter a string:");
 	fgets(buf, 256, stdin);
@@ -12,5 +12,6 @@ int main()
 	if (buf[len - 1] == '\n')        
 		buf[len - 1] = 0;
 	printf("Result: %s\n", clear(buf));
+
 	return 0;
 }

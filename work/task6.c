@@ -1,28 +1,40 @@
+#include <string.h>
 #include "task6.h"
+
 
 char* clear(char *line)
 {
-	char *pointer = line, *result = line;
 	int isWord = 0;
-	while (*line)
+	int pos = 0, flag = 0;
+	int y = 0;
+	int end;
+	int i;
+	for (i = 0; line[i]; ++i)
 	{
-		if (*line == ' ' && isWord)
+		if (!flag && line[i] == '\ ' && !isWord)
 		{
-			*pointer = *line;
-			pointer++;
+			pos = i;
+			flag = 1;
+		}
+		else  if (line[i] == '\ ' && isWord)
+		{
+			end = i;
 			isWord = 0;
-			
 		}
-		else if (*line != ' ')
+		else if (line[i] != '\ ' && !isWord)
 		{
-			isWord++;
-			if (pointer != line){
-				*pointer = *line;
+			if (flag)
+			{
+				y = i;
+				i = pos;
+				while (line[pos++] = line[y++]);
+				flag = 0;
 			}
-			pointer++;
-		}
-		line++;
+			isWord = 1;
+		}	
 	}
-	*pointer = '\0';
-	return result;
+	if (line[i - 1] == '\ ')
+		line[end] = '\0';
+
+	return line;
 }

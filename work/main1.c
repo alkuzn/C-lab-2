@@ -9,13 +9,17 @@ int main()
 	clock_t now;
 	printf("Height(format 5000.0): ");
 	scanf("%f", &startHeight);
-	while ((currentHeight = startHeight - height(timer, startHeight)) >= 0)
+	while (1)
 	{
+		if ((currentHeight = height(timer, startHeight)) <= 0)
+		{
+			printf("BABAH!!!\n");
+			return 0;
+		}
 		printf("t=%02dc h=%.1f M\n", timer, currentHeight);
 		now = clock();
 		while ((clock() <= now + CLOCKS_PER_SEC));
 		timer++;
 	}
-	printf("BABAH!!!\n");
-	
+	return 0;
 }
